@@ -47,6 +47,25 @@ dependencies:
   cloud_firestore: ^4.5.0
   http: ^0.13.5
   auto_size_text: ^3.0.0
+  camera: ^0.10.4
+  image_picker: ^0.8.7+3
+  flutter_native_splash: ^2.2.19
+  flutter_launcher_icons: ^0.13.0
+  social_share: ^2.3.1
+
+flutter_native_splash:
+  color: "#3F51B5"
+  image: "assets/app/splash.png"
+  android: true
+  ios: true
+
+flutter_icons:
+  image_path: "assets/app/icon.png"
+  ios: true
+  remove_alpha_ios: true
+  android: "launcher_icon"
+  adaptive_icon_background: "#FFFFFF"
+  adaptive_icon_foreground: "assets/app/icon-android.png"
 
 dev_dependencies:
   flutter_test:
@@ -71,12 +90,12 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - images/bitcoin.png
-    - images/cardano.png
-    - images/ethereum.png
-    - images/litecoin.png
-    - images/usdcoin.png
-    - images/xrp.png
+    - assets/app/icon.png
+  #   - images/cardano.png
+  #   - images/ethereum.png
+  #   - images/litecoin.png
+  #   - images/usdcoin.png
+  #   - images/xrp.png
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware

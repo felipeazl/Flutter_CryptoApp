@@ -1,5 +1,5 @@
-import 'package:crypto_app/app/screens/home_page.dart';
-import 'package:crypto_app/app/screens/login_page.dart';
+import 'package:crypto_app/app/pages/home_page.dart';
+import 'package:crypto_app/app/pages/login_page.dart';
 import 'package:crypto_app/app/services/auth_service.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -29,7 +29,7 @@ class _AuthCheckState extends State<AuthCheck> {
     return const Scaffold(
       body: Center(
         child: CircularProgressIndicator(
-          color: Colors.deepPurple,
+          color: Colors.indigo,
         ),
       ),
     );

@@ -10,7 +10,7 @@ class App extends StatelessWidget {
       title: "CryptoApp",
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
+        primarySwatch: Colors.indigo,
       ),
       home: const AuthCheck(),
     );

@@ -21,17 +21,13 @@ void main() async {
         ChangeNotifierProvider(create: (context) => AuthService()),
         ChangeNotifierProvider(create: (context) => CoinRepository()),
         ChangeNotifierProvider(
-          create: (context) => UserRepository(
-            coins: context.read<CoinRepository>(),
-          ),
-        ),
+            create: (context) =>
+                UserRepository(coins: context.read<CoinRepository>())),
         ChangeNotifierProvider(create: (context) => AppSettings()),
         ChangeNotifierProvider(
-          create: (context) => FavoriteRepository(
-            auth: context.read<AuthService>(),
-            coins: context.read<CoinRepository>(),
-          ),
-        ),
+            create: (context) => FavoriteRepository(
+                auth: context.read<AuthService>(),
+                coins: context.read<CoinRepository>()))
       ],
       child: const App(),
     ),

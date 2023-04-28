@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_function_literals_in_foreach_calls, prefer_const_declarations
+
 import 'dart:async';
 import 'dart:convert';
 

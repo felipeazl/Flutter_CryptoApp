@@ -2,7 +2,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:crypto_app/app/config/app_setting.dart';
 import 'package:crypto_app/app/repositories/favorite_repository.dart';
-import 'package:crypto_app/app/screens/coins_details_page.dart';
+import 'package:crypto_app/app/pages/coins_details_page.dart';
 import 'package:flutter/material.dart';
 
 import 'package:crypto_app/app/models/coin_model.dart';
@@ -26,7 +26,7 @@ class _CoinsCardState extends State<CoinsCard> {
   static Map<String, Color> priceColor = <String, Color>{
     "up": Colors.green,
     //"down": Colors.red,
-    "down": Colors.deepPurple,
+    "down": Colors.indigo,
   };
 
   readNumberFormat() {

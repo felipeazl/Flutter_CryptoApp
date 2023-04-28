@@ -18,7 +18,7 @@ class _FavoritesPageState extends State<FavoritesPage> {
     return Scaffold(
       appBar: const CustomAppBar(title: "Moedas Favoritas"),
       body: Container(
-        color: Colors.deepPurple.withOpacity(0.05),
+        color: Colors.indigo.withOpacity(0.05),
         height: size.height,
         padding: const EdgeInsets.all(12),
         child: Consumer<FavoriteRepository>(

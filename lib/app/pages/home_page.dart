@@ -1,7 +1,7 @@
-import 'package:crypto_app/app/screens/configs_page.dart';
-import 'package:crypto_app/app/screens/coins_page.dart';
-import 'package:crypto_app/app/screens/favorites_page.dart';
-import 'package:crypto_app/app/screens/wallet_page.dart';
+import 'package:crypto_app/app/pages/configs_page.dart';
+import 'package:crypto_app/app/pages/coins_page.dart';
+import 'package:crypto_app/app/pages/favorites_page.dart';
+import 'package:crypto_app/app/pages/wallet_page.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
       ),
       bottomNavigationBar: NavigationBarTheme(
         data: NavigationBarThemeData(
-          backgroundColor: Colors.deepPurple.withOpacity(0.1),
+          backgroundColor: Colors.indigo.withOpacity(0.1),
           labelTextStyle: MaterialStateProperty.all(
             const TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
           ),

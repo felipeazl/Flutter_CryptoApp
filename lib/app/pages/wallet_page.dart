@@ -98,7 +98,7 @@ class _WalletPageState extends State<WalletPage> {
       final isBalance = i == walletLength - 1;
       final fontSize = isTouched ? 18.0 : 14.0;
       final radius = isTouched ? 60.0 : 50.0;
-      final color = isTouched ? Colors.deepPurple[400] : Colors.deepPurple;
+      final color = isTouched ? Colors.indigo[200] : Colors.indigo;
 
       double percentage = 0;
 
@@ -165,7 +165,7 @@ class _WalletPageState extends State<WalletPage> {
                     chartLabel,
                     style: const TextStyle(
                       fontSize: 20,
-                      color: Colors.deepPurple,
+                      color: Colors.indigo,
                     ),
                   ),
                   Text(

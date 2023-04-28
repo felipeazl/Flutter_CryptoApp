@@ -1,11 +1,17 @@
+// ignore_for_file: avoid_print
+
+import 'dart:io';
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:intl/intl.dart';
 import 'package:provider/provider.dart';
 
 import 'package:crypto_app/app/config/app_setting.dart';
-import 'package:crypto_app/app/repositories/favorite_repository.dart';
+import 'package:crypto_app/app/pages/camera_page.dart';
+//import 'package:crypto_app/app/repositories/favorite_repository.dart';
 import 'package:crypto_app/app/repositories/user_repository.dart';
 import 'package:crypto_app/app/services/auth_service.dart';
 import 'package:crypto_app/app/widgets/appbar.dart';
@@ -20,6 +26,8 @@ class ConfigPage extends StatefulWidget {
 }
 
 class _ConfigPageState extends State<ConfigPage> {
+  XFile? doc;
+
   @override
   Widget build(BuildContext context) {
     final auth = FirebaseAuth.instance.currentUser;
@@ -55,7 +63,7 @@ class _ConfigPageState extends State<ConfigPage> {
                     currency.format(user.balance),
                     style: const TextStyle(
                       fontSize: 25,
-                      color: Colors.deepPurple,
+                      color: Colors.indigo,
                     ),
                   ),
                   trailing: IconButton(
@@ -77,28 +85,38 @@ class _ConfigPageState extends State<ConfigPage> {
               ),
               Column(
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 6),
+                  const Padding(
+                    padding: EdgeInsets.symmetric(vertical: 4),
                     child: ListTile(
-                      title: const Text("Tema do aplicativo"),
-                      trailing: PopupMenuButton(
-                        icon: const Icon(Icons.sunny),
-                        itemBuilder: (context) => [],
-                      ),
+                      title: Text("Tema do aplicativo"),
+                      trailing: Icon(Icons.sunny),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 6),
+                    padding: const EdgeInsets.symmetric(vertical: 4),
                     child: ListTile(
                       title: const Text("Escanear documento"),
-                      trailing: PopupMenuButton(
-                        icon: const Icon(Icons.camera_alt),
-                        itemBuilder: (context) => [],
+                      trailing: const Icon(Icons.camera_alt),
+                      onTap: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => const CameraPage(),
+                          fullscreenDialog: true,
+                        ),
                       ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    padding: const EdgeInsets.symmetric(vertical: 4),
+                    child: ListTile(
+                      title: const Text("Enviar documento"),
+                      trailing: const Icon(Icons.attach_file),
+                      onTap: selectDoc,
+                      leading: doc != null ? Image.file(File(doc!.path)) : null,
+                    ),
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
                     child: CustomButton(
                       title: "Reiniciar dados do aplicativo",
                       fontSizeText: 16,
@@ -109,7 +127,7 @@ class _ConfigPageState extends State<ConfigPage> {
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 12),
+                    padding: const EdgeInsets.symmetric(vertical: 8),
                     child: OutlinedButton(
                       onPressed: () => context.read<AuthService>().logout(),
                       style:
@@ -137,9 +155,20 @@ class _ConfigPageState extends State<ConfigPage> {
     );
   }
 
+  selectDoc() async {
+    final ImagePicker picker = ImagePicker();
+
+    try {
+      XFile? file = await picker.pickImage(source: ImageSource.gallery);
+      if (file != null) setState(() => doc = file);
+    } catch (e) {
+      print(e);
+    }
+  }
+
   clearData() async {
     final user = context.read<UserRepository>();
-    final favorites = context.read<FavoriteRepository>();
+    //final favorites = context.read<FavoriteRepository>();
 
     AlertDialog dialog = AlertDialog(
       title: const Text("Deseja limpar todos os dados do aplicativo?"),

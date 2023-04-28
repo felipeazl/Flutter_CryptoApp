@@ -1,3 +1,5 @@
+// ignore_for_file: must_be_immutable
+
 import 'package:crypto_app/app/config/app_setting.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:flutter/material.dart';
@@ -23,7 +25,7 @@ enum Period { hour, day, week, month, year, total }
 
 class _ChartHistoryState extends State<ChartHistory> {
   List<Color> colors = [
-    const Color(0xFF673bb7),
+    const Color(0xFF4050b5),
   ];
   Period period = Period.hour;
   List<Map<String, dynamic>> history = [];
@@ -140,7 +142,7 @@ class _ChartHistoryState extends State<ChartHistory> {
               )
             : ButtonStyle(
                 foregroundColor: MaterialStateProperty.all(
-                  Colors.deepPurple,
+                  Colors.indigo,
                 ),
               ),
         child: Text(label),

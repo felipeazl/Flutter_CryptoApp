@@ -3,7 +3,7 @@ import 'package:crypto_app/app/config/app_setting.dart';
 import 'package:crypto_app/app/models/coin_model.dart';
 import 'package:crypto_app/app/repositories/coin_repository.dart';
 import 'package:crypto_app/app/repositories/favorite_repository.dart';
-import 'package:crypto_app/app/screens/coins_details_page.dart';
+import 'package:crypto_app/app/pages/coins_details_page.dart';
 import 'package:crypto_app/app/widgets/appbar.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
@@ -100,7 +100,7 @@ class _CoinsPageState extends State<CoinsPage> {
             )
           : CustomAppBar(
               title: "${selected.length} moedas selecionadas",
-              backgroundColor: Colors.deepPurple[50],
+              backgroundColor: Colors.indigo[50],
               leadingIcon: Icons.clear,
               textColor: Colors.black87,
               onPressed: removeSelected,
@@ -147,7 +147,7 @@ class _CoinsPageState extends State<CoinsPage> {
               subtitle: Text(data[coin].acronym),
               trailing: Text(currency.format(data[coin].price)),
               selected: selected.contains(data[coin]),
-              selectedTileColor: Colors.deepPurple[50],
+              selectedTileColor: Colors.indigo[50],
               onLongPress: () => selectCoin(data[coin]),
               onTap: selected.isEmpty
                   ? () => showDetails(data[coin])

@@ -12,6 +12,7 @@ import 'package:crypto_app/app/repositories/user_repository.dart';
 import 'package:crypto_app/app/widgets/appbar.dart';
 import 'package:crypto_app/app/widgets/button.dart';
 import 'package:crypto_app/app/widgets/text_field.dart';
+import 'package:social_share/social_share.dart';
 
 class CoinsDetailsPage extends StatefulWidget {
   final CoinModel coin;
@@ -51,6 +52,13 @@ class _CoinsDetailsPageState extends State<CoinsDetailsPage> {
     }
   }
 
+  share() {
+    final coin = widget.coin;
+    SocialShare.shareOptions(
+      "Confira o preço do ${coin.name} agora: ${coin.price}",
+    );
+  }
+
   @override
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
@@ -63,6 +71,12 @@ class _CoinsDetailsPageState extends State<CoinsDetailsPage> {
         onPressed: () {
           Navigator.pop(context);
         },
+        action: [
+          IconButton(
+            onPressed: share,
+            icon: const Icon(Icons.share),
+          ),
+        ],
       ),
       body: SingleChildScrollView(
         child: Padding(
@@ -106,7 +120,7 @@ class _CoinsDetailsPageState extends State<CoinsDetailsPage> {
                         alignment: Alignment.center,
                         padding: const EdgeInsets.all(12),
                         decoration: BoxDecoration(
-                          color: Colors.deepPurple[50],
+                          color: Colors.indigo[50],
                           borderRadius: BorderRadius.circular(12),
                         ),
                         child: Text(
